@@ -5,22 +5,4 @@ on:
 
 jobs:
   terraform-validate:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Validate Terraform configuration
-        uses: devops-infra/action-terraform-validate@v0.3.1
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Terraform Format
-        run: terraform fmt -check -recursive
-
-      - name: Run Checkov action
-        id: checkov
-        uses: bridgecrewio/checkov-action@master
-        with:
-          framework: terraform
+    uses: Automation-Platform/github-workflow-terraform/.github/workflows/terraform-validate.yml@main
