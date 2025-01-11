@@ -15,7 +15,7 @@ run "use_password_authentication" {
     name                = "simplevm"
     location            = run.setup_tests.resource_group.location
     resource_group_name = run.setup_tests.resource_group.name
-    admin_password = "123Passw0rd!"
+    admin_password      = "123Passw0rd!"
   }
   # test default value for admin_username
   assert {
@@ -29,7 +29,7 @@ run "use_password_authentication" {
   }
 
   assert {
-    condition = length(azurerm_linux_virtual_machine.vm.admin_ssh_key) == 0
+    condition     = length(azurerm_linux_virtual_machine.vm.admin_ssh_key) == 0
     error_message = "when admin_password is specified admin_ssh_key must not be used"
   }
 }
@@ -42,7 +42,7 @@ run "use_ssh_authentication" {
     name                = "simplevm"
     location            = run.setup_tests.resource_group.location
     resource_group_name = run.setup_tests.resource_group.name
-    admin_ssh_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCI/gIcZpQis0zB8emzhQDokIwFzTnxL0PgFqyCfXhZFW4ClI0ROovdUa1QvzevWYrF18LRaZwEv6z144aksfifpDA1lMjJMRmYb2kTB8/J4kbdxXKvT4CVik+BhzxJSNG3/H+cutzK6gpBF+WpqmzPzD0pvCJj0W/AtXSfN4gwchXxJQJsU1MVMPkONoJGjkwn51mnryQtHM4jbTicysEHETX0StlDMLZPAnASC2My72CpSaSgCl9c5mo8RHgLQrZKxH7JaEj5ebDYZqSERhfzAkPvzTy7OPj663/rfq/noCfemataPVKUcpfyqxPHvXrNMI1GQGu1eq+pTs7oIrPF"
+    admin_ssh_key       = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCI/gIcZpQis0zB8emzhQDokIwFzTnxL0PgFqyCfXhZFW4ClI0ROovdUa1QvzevWYrF18LRaZwEv6z144aksfifpDA1lMjJMRmYb2kTB8/J4kbdxXKvT4CVik+BhzxJSNG3/H+cutzK6gpBF+WpqmzPzD0pvCJj0W/AtXSfN4gwchXxJQJsU1MVMPkONoJGjkwn51mnryQtHM4jbTicysEHETX0StlDMLZPAnASC2My72CpSaSgCl9c5mo8RHgLQrZKxH7JaEj5ebDYZqSERhfzAkPvzTy7OPj663/rfq/noCfemataPVKUcpfyqxPHvXrNMI1GQGu1eq+pTs7oIrPF"
   }
   # test default value for admin_username
   assert {
@@ -56,7 +56,7 @@ run "use_ssh_authentication" {
   }
 
   assert {
-    condition = azurerm_linux_virtual_machine.vm.admin_password == null
+    condition     = azurerm_linux_virtual_machine.vm.admin_password == null
     error_message = "when ssh_key is specified admin_password must not be used"
   }
 }
