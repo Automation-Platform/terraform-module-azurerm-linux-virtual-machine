@@ -1,5 +1,5 @@
 output "azurerm_public_ip" {
-  value = azurerm_public_ip.pip[0].ip_address
+  value = var.public_ip_enabled ? azurerm_public_ip.pip[0].ip_address : null
 }
 
 output "azurerm_network_interface" {
